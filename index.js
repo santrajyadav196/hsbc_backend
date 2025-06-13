@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 4000;
 
 const userRoutes = require("./routes/user.route");
 const expenseRoutes = require("./routes/expense.route");
+const filterExpense = require("./routes/filter.router");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -31,6 +32,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", userRoutes);
 app.use("/api/expenses", expenseRoutes);
+app.use("/api/filter", filterExpense);
 
 // catch url not found and forward to error handler
 app.all("*wildcard", (req, res, next) => {
